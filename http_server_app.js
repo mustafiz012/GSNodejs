@@ -18,7 +18,7 @@ server.listen('3000');*/
 // ==>> Serving static files with http and file system modules
 const fs = require('fs');
 http.createServer((req, res) => {
-    const readStream = fs.createReadStream('./static/xb_dancing.mp4');
+    const readStream = fs.createReadStream('./static/sample.mp4');
     // res.writeHead(200, {'Content-type': 'text/html'});
     // res.writeHead(200, {'Content-type': 'application/json'});
     // res.writeHead(200, {'Content-type': 'image/jpeg'});
