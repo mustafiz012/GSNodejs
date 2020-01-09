@@ -13,8 +13,16 @@ app.get('/', (req, res) => {
     res.send('Hello from express root route')
 });
 
-app.get('/example', (req, res)=>{
+app.get('/example', (req, res) => {
     res.send('This is /example route')
+});
+/*
+use 'route' params when it's urgent otherwise 'query' params
+* */
+app.get('/example/:name/:age', (req, res) => {
+    console.log(req.params);    //localhost:3000/example/Musta/25
+    console.log(req.query);     //localhost:3000/example/Musta/25?name=Musta&age=25
+    res.send(req.params.name + " : " + req.params.age)
 });
 
 app.listen(3000);
