@@ -25,4 +25,12 @@ app.get('/example/:name/:age', (req, res) => {
     res.send(req.params.name + " : " + req.params.age)
 });
 
+//serving static files using express
+const path = require('path');
+//using middleware
+app.use('/public', express.static(path.join(__dirname, 'static')));
+app.get('/home', (req, res) => {
+    res.sendFile(path.join(__dirname, 'static', 'index.html'))
+});
+
 app.listen(3000);
