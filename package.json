@@ -10,7 +10,8 @@
   "author": "mustafiz012",
   "license": "ISC",
   "dependencies": {
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "express": "^4.17.1"
   },
   "directories": {
     "example": "example"
