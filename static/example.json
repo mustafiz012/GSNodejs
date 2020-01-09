@@ -1,0 +1,40 @@
+{
+  "userNotificationList": [
+    {
+      "id": 1,
+      "subject": "title1",
+      "notification_message": "message1",
+      "notification_date": "time1"
+    },
+    {
+      "id": 2,
+      "subject": "Amar Sonar Bangla",
+      "notification_message": "Amar sonar bangla, ami tomay valobashi. Cirodin tomar akash, tomar batash amar prane. O'ma amar prane bajai bashi, sonar Bangla.",
+      "notification_date": "time2"
+    },
+    {
+      "id": 3,
+      "subject": "title3",
+      "notification_message": "message3",
+      "notification_date": "time3"
+    },
+    {
+      "id": 4,
+      "subject": "title4",
+      "notification_message": "message4",
+      "notification_date": "time4"
+    },
+    {
+      "id": 5,
+      "subject": "title5",
+      "notification_message": "message5",
+      "notification_date": "time5"
+    },
+    {
+      "id": 6,
+      "subject": "title6",
+      "notification_message": "message6",
+      "notification_date": "time6"
+    }
+  ]
+}
