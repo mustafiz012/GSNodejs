@@ -33,4 +33,23 @@ app.get('/home', (req, res) => {
     res.sendFile(path.join(__dirname, 'static', 'index.html'))
 });
 
-app.listen(3000);
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'static', 'login.html'))
+});
+
+//post request with express and body parser module
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
+app.get('/secureLogin', (req, res) => {
+    res.sendFile(path.join(__dirname, 'static', '/login/index.html'))
+});
+
+app.post('/attemptLogin', (req, res) => {
+    console.log(req.body);
+    //database work here
+    res.send('Successfully posted data')
+});
+
+app.listen(3010, () => {
+    console.log('App listening on port 3010')
+});
