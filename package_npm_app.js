@@ -34,12 +34,12 @@ app.get('/home', (req, res) => {
 });
 
 app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'static', 'login.html'))
+    res.sendFile(path.join(__dirname, 'static', 'index.html'))
 });
 
 //post request with express and body parser module
 const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: false}));  //extended : false means that we're not gonna deal with any complex object
 app.get('/secureLogin', (req, res) => {
     res.sendFile(path.join(__dirname, 'static', '/login/index.html'))
 });
@@ -48,6 +48,13 @@ app.post('/attemptLogin', (req, res) => {
     console.log(req.body);
     //database work here
     res.send('Successfully posted data')
+});
+
+//Working with JSON Data using express and body parser module
+app.use(bodyParser.json());
+app.post('/attemptJsonLogin', (req, res) => {
+    console.log(req.body);
+    res.json({success: true})
 });
 
 app.listen(3010, () => {
