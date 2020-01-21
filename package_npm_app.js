@@ -98,7 +98,40 @@ app.post('/validateLogin', (req, res) => {
             }
         );
     })
+});
 
+
+//Working with user input (form with little bit complex data) validation with express and joi
+const arrayString = ['banana', 'bacon', 'cheese'];
+const arrayObjects = [{example: 'example1'}, {example: 'example2'}];
+
+const userInput = {
+    personalInfo: {
+        streetAddress: '16/28',
+        locality: 'Mirpur',
+        city: 'Dhaka'
+    },
+    preferences: arrayString
+};
+
+const personalInfoSchema = Joi.object().keys({
+    streetAddress: Joi.string().trim().required(),
+    locality: Joi.string().trim().required(),
+    city: Joi.string().trim().required()
+});
+
+const preferencesSchema = Joi.array().items(Joi.string());
+
+const schema = Joi.object().keys({
+    personalInfo: personalInfoSchema,
+    preferences: preferencesSchema
+});
+
+Joi.validate(userInput, schema, (err, result) => {
+    if (err)
+        console.log(err);
+    else
+        console.log(result)
 });
 
 app.listen(3010, () => {
