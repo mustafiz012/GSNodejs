@@ -140,6 +140,20 @@ app.get('/secureLoginWithEjs', (req, res) => {
     res.render('login');
 });
 
+//Working with Middleware
+app.use((req, res, next) => {
+    console.log(req.url, req.method);
+    next()
+});
+
+app.get('/testMiddleware', (req, res) => {
+    res.render('test');
+});
+
+const people = require('./routes/people');
+app.use('/people', people);
+//http://localhost:3010/people/example
+
 app.listen(3010, () => {
     console.log('App listening on port 3010')
 });
