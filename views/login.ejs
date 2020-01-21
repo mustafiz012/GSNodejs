@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Login</title>
+</head>
+<body>
+<form action="/validateLogin" id="form" method="post">
+    <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input name="uname" placeholder="Enter Username" required type="text">
+
+        <label for="psw"><b>Password</b></label>
+        <input name="psw" placeholder="Enter Password" required type="password">
+
+        <button type="submit">Login</button>
+        <label>
+            <input checked="checked" name="remember" type="checkbox"> Remember me
+        </label>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+        <button class="cancelbtn" type="button">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+</form>
+<script crossorigin="anonymous" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(() => {
+        $('#form').submit((e) => {
+            e.preventDefault();
+            $.ajax({
+                url: '/validateLogin',
+                type: 'post',
+                contentType: 'application/json',
+                data: JSON.stringify($('#form').serializeArray()),
+                success: (response) => {
+                    console.log('Response received successfully');
+                    console.log(response);
+                }
+            })
+        })
+    });
+</script>
+</body>
+</html>

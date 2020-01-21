@@ -108,7 +108,7 @@ const arrayObjects = [{example: 'example1'}, {example: 'example2'}];
 const userInput = {
     personalInfo: {
         streetAddress: '16/28',
-        locality: 'Mirpur',
+        locality: 'Mir pur',
         city: 'Dhaka'
     },
     preferences: arrayString
@@ -132,6 +132,12 @@ Joi.validate(userInput, schema, (err, result) => {
         console.log(err);
     else
         console.log(result)
+});
+
+//Getting started with EJS Templates with express
+app.set('view engine', 'ejs');
+app.get('/secureLoginWithEjs', (req, res) => {
+    res.render('login');
 });
 
 app.listen(3010, () => {
