@@ -57,6 +57,50 @@ app.post('/attemptJsonLogin', (req, res) => {
     res.json({success: true})
 });
 
+//Working with user input (login) validation with express and joi
+const Joi = require('joi');
+app.post('/validateLogin', (req, res) => {
+    console.log(req.body);
+    const schema = Joi.object().keys({
+        email: Joi.string().trim().email().required(),
+        password: Joi.string().trim().min(8).max(16).required()
+    });
+
+    let dataToValidate = {
+        email: req.body[0].value,
+        password: req.body[1].value
+    };
+
+    // console.log(res.json(req.body));
+    console.log(dataToValidate);
+
+//{email: "hapi@example.com", password: "123456789"}    //data format
+    Joi.validate(dataToValidate, schema, (err, result) => {
+        if (err) {
+            console.log(err);
+            res.json(
+                {
+                    status: 401,
+                    success: false,
+                    message: "An error has been occurred!",
+                    error: err.message,
+                    data: err
+                }
+            );
+        }
+        console.log(result);
+        res.json(
+            {
+                status: 200,
+                success: true,
+                message: 'Login successful with validation!',
+                data: result
+            }
+        );
+    })
+
+});
+
 app.listen(3010, () => {
     console.log('App listening on port 3010')
 });

@@ -5,7 +5,7 @@
     <title>User Login</title>
 </head>
 <body>
-<form action="/attemptJsonLogin" id="form" method="post">
+<form action="/validateLogin" id="form" method="post">
     <div class="container">
         <label for="uname"><b>Username</b></label>
         <input name="uname" placeholder="Enter Username" required type="text">
@@ -31,7 +31,7 @@
         $('#form').submit((e) => {
             e.preventDefault();
             $.ajax({
-                url: '/attemptJsonLogin',
+                url: '/validateLogin',
                 type: 'post',
                 contentType: 'application/json',
                 data: JSON.stringify($('#form').serializeArray()),
